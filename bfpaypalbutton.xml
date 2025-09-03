@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.0" type="plugin" group="content" method="upgrade">4
     <name>PLG_BFPAYPALBUTTON</name>
-    <creationDate>November 2022</creationDate>
+    <creationDate>November 2022-2025</creationDate>
     <author>Jonathan Brain</author>
     <authorEmail>brainforge.uk@btinternet.com</authorEmail>
     <authorUrl>https://www.brainforge.co.uk</authorUrl>
-    <copyright>Copyright 2022 Jonathan Brain. All rights reserved.</copyright>
+    <copyright>Copyright 2022-2025 Jonathan Brain. All rights reserved.</copyright>
     <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <description>PLG_BFPAYPALBUTTON_XML_DESC</description>
 
     <files>
