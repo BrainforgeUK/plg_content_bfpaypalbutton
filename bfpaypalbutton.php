@@ -16,12 +16,15 @@ class plgContentBFPaypalButton extends JPlugin
 {
 	protected $app;
 	protected $hasButton = false;
+	protected $buttoncode;
 
 	/**
 	*/
 	public function __construct(&$subject, $config = array())
 	{
 		parent::__construct($subject, $config);
+
+		$this->buttoncode = trim($this->params->get('buttoncode'));
 	}
 
 	/**
@@ -29,11 +32,12 @@ class plgContentBFPaypalButton extends JPlugin
 	*/
 	public function onContentPrepare($context, &$article, &$params, $limitstart)
 	{
-		$buttoncode = trim($this->params->get('buttoncode'));
-
-		if (empty($buttoncode)) return;
-
 		if (!$this->app->isClient('site')) return;
+
+		if (empty($this->buttoncode)) return;
+
+		// Allow the escape sequence to be embedded in text without triggering a match.
+		$article->text = str_replace('{{bfpaypalbutton}', '&#123;bfpaypalbutton}', $article->text);
 
 		if (preg_match_all('/{bfpaypalbutton}/i', $article->text, $matches, PREG_SET_ORDER))
 		{
@@ -48,7 +52,7 @@ class plgContentBFPaypalButton extends JPlugin
 				// Hides button in module when it is already in page content
 				$this->hasButton = true;
 
-				$article->text = str_replace('{bfpaypalbutton}', $buttoncode, $article->text);
+				$article->text = str_replace('{bfpaypalbutton}', $this->buttoncode, $article->text);
 			}
 		}
 	}
